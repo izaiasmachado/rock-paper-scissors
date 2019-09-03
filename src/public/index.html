@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock Paper Scissors</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="max-limit" hidden>
+        <h1>You are not connected!</h1>
+    </div>
+
+    <div id="game-container" hidden>
+        <h1>Rock Paper Scissors!</h1>
+        <input type="button" id="btn-rock" onclick="actionRock()" value="Rock" />
+        <input type="button" id="btn-rock" onclick="actionPaper()" value="Paper" />
+        <input type="button" id="btn-rock" onclick="actionScissors()" value="Scissors" />
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
