@@ -67,7 +67,7 @@ io.on('connection', socket => {
     console.log(players)
 })
 
-server.listen('3000', () => console.log(`Running on http://localhost:3000/`))
+server.listen('8080', () => console.log(`Running on http://localhost:8080/`))
 
 function rpsRules(p1, p2) {
     if (p1 == p2) {
