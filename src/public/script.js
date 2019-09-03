@@ -1,4 +1,4 @@
-const socket = io('http://localhost:8080') // This connects the frontend socket with the backend
+const socket = io('http://localhost:3000') // This connects the frontend socket with the backend
 
 socket.on('serverResponse', function (data) {
     window.alert(data)

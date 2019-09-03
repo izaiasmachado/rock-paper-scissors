@@ -50,8 +50,8 @@ io.on('connection', socket => {
             const winner = rpsRules(play.p1, play.p2)
 
             if (winner) {
-                socket.broadcast.emit('serverResponse', `You lose :/`)
-                socket.emit('serverResponse', `You won!`) // This send the message to everyone BUT the sender
+                socket.broadcast.emit('serverResponse', `${winner} won`)
+                socket.emit('serverResponse', `${winner} won`) // This send the message to everyone BUT the sender
                 console.log(`${winner} won this round`)
             } else {
                 socket.broadcast.emit('serverResponse', `draw`)
@@ -67,7 +67,7 @@ io.on('connection', socket => {
     console.log(players)
 })
 
-server.listen('8080', () => console.log(`Running on http://localhost:8080/`))
+server.listen('3000', () => console.log(`Running on http://localhost:3000`))
 
 function rpsRules(p1, p2) {
     if (p1 == p2) {
