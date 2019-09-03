@@ -1,7 +1,15 @@
 const socket = io('http://localhost:3000') // This connects the frontend socket with the backend
 
-socket.on('serverResponse', function (data) {
-    window.alert(data)
+socket.on('serverResponse', function (data) {    
+    if (data == 'draw') {
+        window.alert('Draw!')
+    } else {
+        if (socket.id == data) {
+            window.alert('You won!')
+        } else {
+            window.alert('You lose :/')
+        }
+    }
 })
 
 socket.on('playResponse', function (data) {
