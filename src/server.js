@@ -50,8 +50,8 @@ io.on('connection', socket => {
             const winner = rpsRules(play.p1, play.p2)
 
             if (winner) {
-                socket.broadcast.emit('serverResponse', `${winner} won this round`)
-                socket.emit('serverResponse', `${winner} won this round`) // This send the message to everyone BUT the sender
+                socket.broadcast.emit('serverResponse', `You lose :/`)
+                socket.emit('serverResponse', `You won!`) // This send the message to everyone BUT the sender
                 console.log(`${winner} won this round`)
             } else {
                 socket.broadcast.emit('serverResponse', `draw`)

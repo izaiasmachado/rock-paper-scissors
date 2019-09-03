@@ -1,7 +1,7 @@
-const socket = io('http://localhost:3000') // This connects the frontend socket with the backend
+const socket = io('http://dec7ffa8.sa.ngrok.io') // This connects the frontend socket with the backend
 
 socket.on('serverResponse', function (data) {
-    console.log(data)
+    window.alert(data)
 })
 
 socket.on('playResponse', function (data) {
