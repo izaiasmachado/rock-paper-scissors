@@ -57,3 +57,8 @@ div#max-limit h1{
 div#max-limit img {
     width: 300px;
 }
+
+footer a img {
+    margin-left: 32.5%;
+    width: 100px;
+}

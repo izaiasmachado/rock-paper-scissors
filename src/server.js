@@ -30,7 +30,6 @@ io.on('connection', socket => {
         if (socket.id == players[0]) {
             if (!play.p1) {
                 play.p1 = data
-                socket.emit('playResponse', `${data}`)
             } else {
                 socket.emit('wait-for-you-opponent-to-choose')
             }
@@ -39,7 +38,6 @@ io.on('connection', socket => {
         if (socket.id == players[1]) {
             if (!play.p2) {
                 play.p2 = data
-                socket.emit('playResponse', `${data}`)
             } else {
                 socket.emit('wait-for-you-opponent-to-choose')
             }
@@ -91,7 +89,7 @@ function rpsRules(p1, p2) {
     }
 }
 
-function removeInactivePlayers(socket) {
+function removeInactivePlayers() {
     for (let i = 0; i < players.length; i++) {
         if (!io.sockets.sockets[players[i]]) {
             const removed = players.splice(i, 1)
