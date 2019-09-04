@@ -7,7 +7,7 @@ This is a simple online multiplayer game to practice my Socket.io skills.
 - [Express](http://npmjs.com/package/express)
 - [Socket.io](http://npmjs.com/package/socket.io)
 
-# Hows the game?
+# How the game works?
 Just load in two browsers then simply choose rock, paper or scissors. 
 
 ![game-image](https://i.ibb.co/whTNhGr/chrome-dqka-Uj-Lxmm.png)
