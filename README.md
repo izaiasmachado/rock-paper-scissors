@@ -9,4 +9,5 @@ This is a simple online multiplayer game to practice my Socket.io skills.
 
 # Hows the game?
 Just load in two browsers then simply choose rock, paper or scissors. 
+
 ![game-image](https://i.ibb.co/whTNhGr/chrome-dqka-Uj-Lxmm.png)
