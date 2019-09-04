@@ -15,7 +15,6 @@ app.use('/', (req, res) => {
 })
 
 let play = {}
-let plays = []
 let players = []
 
 io.on('connection', socket => {
@@ -31,7 +30,7 @@ io.on('connection', socket => {
         if (socket.id == players[0]) {
             if (!play.p1) {
                 play.p1 = data
-                socket.emit('playResponse', `P1:${data}`)
+                socket.emit('playResponse', `${data}`)
             } else {
                 socket.emit('wait-for-you-opponent-to-choose')
             }
@@ -40,7 +39,7 @@ io.on('connection', socket => {
         if (socket.id == players[1]) {
             if (!play.p2) {
                 play.p2 = data
-                socket.emit('playResponse', `P2:${data}`)
+                socket.emit('playResponse', `${data}`)
             } else {
                 socket.emit('wait-for-you-opponent-to-choose')
             }
@@ -50,15 +49,19 @@ io.on('connection', socket => {
             const winner = rpsRules(play.p1, play.p2)
 
             if (winner) {
-                socket.broadcast.emit('serverResponse', `${winner} won this round`)
-                socket.emit('serverResponse', `${winner} won this round`) // This send the message to everyone BUT the sender
-                console.log(`${winner} won this round`)
+                if (winner == 'P1') {
+                    socket.broadcast.emit('serverResponse', `${players[0]}`)
+                    socket.emit('serverResponse', `${players[0]}`) // This send the message to everyone BUT the sender
+                } if(winner == 'P2') {
+                    socket.broadcast.emit('serverResponse', `${players[1]}`)
+                    socket.emit('serverResponse', `${players[1]}`) // This send the message to everyone BUT the sender
+                }
             } else {
                 socket.broadcast.emit('serverResponse', `draw`)
                 socket.emit('serverResponse', `draw`)
+                console.log('draw')
             }
 
-            plays.push(play)
             play = {}
         }
     })
@@ -67,7 +70,7 @@ io.on('connection', socket => {
     console.log(players)
 })
 
-server.listen('3000', () => console.log(`Running on http://localhost:3000/`))
+server.listen('3000', () => console.log(`Running on http://localhost:3000`))
 
 function rpsRules(p1, p2) {
     if (p1 == p2) {
