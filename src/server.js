@@ -52,7 +52,7 @@ io.on('connection', socket => {
                 if (winner == 'P1') {
                     socket.broadcast.emit('serverResponse', `${players[0]}`)
                     socket.emit('serverResponse', `${players[0]}`) // This send the message to everyone BUT the sender
-                } if(winner == 'P2') {
+                } if (winner == 'P2') {
                     socket.broadcast.emit('serverResponse', `${players[1]}`)
                     socket.emit('serverResponse', `${players[1]}`) // This send the message to everyone BUT the sender
                 }

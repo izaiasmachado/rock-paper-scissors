@@ -1,6 +1,6 @@
 const socket = io('http://localhost:3000') // This connects the frontend socket with the backend
 
-socket.on('serverResponse', function (data) {    
+socket.on('serverResponse', function (data) {
     if (data == 'draw') {
         window.alert('Draw!')
     } else {
@@ -39,5 +39,5 @@ function actionScissors() {
 }
 
 socket.on('wait-for-you-opponent-to-choose', () => {
-    window.alert('Wait while your opponent makes his play!')
+    window.alert('Wait while your opponent makes a play!')
 })
