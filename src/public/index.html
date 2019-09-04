@@ -11,17 +11,26 @@
 </head>
 
 <body>
-    <div id="max-limit" hidden>
-        <h1>You are not connected!</h1>
+    <div id="content-container">
+        <div id="max-limit" hidden>
+            <h1>You are not connected!</h1>
+            <img src="imgs/jokenpo.gif"></img>
+        </div>
+        <div id="game-container" hidden>
+            <h1>Rock Paper Scissors!</h1>
+            <button type="button" id="btn-rock" onclick="actionRock()">
+                <img src="imgs/rock.png">
+            </button>
+            <button type="button" id="btn-paper" onclick="actionPaper()">
+                <img src="imgs/paper.png">
+            </button>
+            <button type="button" id="btn-scissors" onclick="actionScissors()">
+                <img src="imgs/scissor.png">
+            </button>
+        </div>
     </div>
 
-    <div id="game-container" hidden>
-        <h1>Rock Paper Scissors!</h1>
-        <input type="button" id="btn-rock" onclick="actionRock()" value="Rock" />
-        <input type="button" id="btn-rock" onclick="actionPaper()" value="Paper" />
-        <input type="button" id="btn-rock" onclick="actionScissors()" value="Scissors" />
-    </div>
-    
     <script type="text/javascript" src="script.js"></script>
 </body>
+
 </html>
