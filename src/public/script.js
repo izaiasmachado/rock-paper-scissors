@@ -1,4 +1,4 @@
-const socket = io('http://localhost:3000') // This connects the frontend socket with the backend
+const socket = io()
 
 socket.on('serverResponse', function (data) {
     if (data == 'draw') {
@@ -10,10 +10,6 @@ socket.on('serverResponse', function (data) {
             window.alert('You lose :/')
         }
     }
-})
-
-socket.on('playResponse', function (data) {
-    console.log(data)
 })
 
 socket.on('show-max-limit', () => {
@@ -38,6 +34,6 @@ function actionScissors() {
     socket.emit('sendPlay', 'scissors')
 }
 
-socket.on('wait-for-you-opponent-to-choose', () => {
+socket.on('wait-for-your-opponent-to-choose', () => {
     window.alert('Wait while your opponent makes a play!')
 })
