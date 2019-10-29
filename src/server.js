@@ -2,8 +2,8 @@ const express = require('express')
 const path = require('path')
 
 const app = express()
-const server = require('http').createServer(app) // Defines http protocol
-const io = require('socket.io')(server) // Defines wss protocol
+const server = require('http').createServer(app)
+const io = require('socket.io')(server)
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'public'))
@@ -20,7 +20,7 @@ let players = []
 io.on('connection', socket => {
     if (io.engine.clientsCount > 2) {
         socket.emit('show-max-limit')
-        return socket.conn.close()
+        socket.conn.close()
     } else {
         players.push(socket.id)
         socket.emit('hide-max-limit')
@@ -31,7 +31,7 @@ io.on('connection', socket => {
             if (!play.p1) {
                 play.p1 = data
             } else {
-                socket.emit('wait-for-you-opponent-to-choose')
+                socket.emit('wait-for-your-opponent-to-choose')
             }
         }
 
@@ -39,7 +39,7 @@ io.on('connection', socket => {
             if (!play.p2) {
                 play.p2 = data
             } else {
-                socket.emit('wait-for-you-opponent-to-choose')
+                socket.emit('wait-for-your-opponent-to-choose')
             }
         }
 
@@ -49,15 +49,14 @@ io.on('connection', socket => {
             if (winner) {
                 if (winner == 'P1') {
                     socket.broadcast.emit('serverResponse', `${players[0]}`)
-                    socket.emit('serverResponse', `${players[0]}`) // This send the message to everyone BUT the sender
+                    socket.emit('serverResponse', `${players[0]}`)
                 } if (winner == 'P2') {
                     socket.broadcast.emit('serverResponse', `${players[1]}`)
-                    socket.emit('serverResponse', `${players[1]}`) // This send the message to everyone BUT the sender
+                    socket.emit('serverResponse', `${players[1]}`)
                 }
             } else {
                 socket.broadcast.emit('serverResponse', `draw`)
                 socket.emit('serverResponse', `draw`)
-                console.log('draw')
             }
 
             play = {}
@@ -65,10 +64,11 @@ io.on('connection', socket => {
     })
 
     removeInactivePlayers(socket)
-    console.log(players)
 })
 
-server.listen('3000', () => console.log(`Running on http://localhost:3000`))
+const port = 3000
+
+server.listen(port, () => console.log(`Running on http://localhost:${port}`))
 
 function rpsRules(p1, p2) {
     if (p1 == p2) {
@@ -92,8 +92,7 @@ function rpsRules(p1, p2) {
 function removeInactivePlayers() {
     for (let i = 0; i < players.length; i++) {
         if (!io.sockets.sockets[players[i]]) {
-            const removed = players.splice(i, 1)
-            console.log(`${removed} was removed.`)
+            players.splice(i, 1)
         }
     }
 }
