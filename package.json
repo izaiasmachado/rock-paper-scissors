@@ -1,11 +1,12 @@
 {
   "name": "rock-paper-scissors",
   "version": "1.0.0",
-  "description": "A Multiplayer \u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D Plain Multiplayer WebSocket Appication",
+  "description": "A Multiplayer WebSocket Application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/server.js"
+    "start": "node src/server.js",
+    "local": "node -r dotenv/config src/server.js",
+    "dev": "nodemon -r dotenv/config src/server.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,11 @@
   },
   "homepage": "https://github.com/izaiasmachado/rock-paper-scissors#readme",
   "dependencies": {
-    "ejs": "^2.6.2",
     "express": "^4.17.1",
     "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.6"
   }
 }
